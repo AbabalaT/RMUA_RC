@@ -66,6 +66,9 @@ void uart_timer_callback(const ros::TimerEvent& event){
                         if(channel[8] < 200.0){
                           rc_mode = 0;
                         }
+						if(channel[8] < -200.0){
+							rc_mode = -1;
+						}
 						std_msgs::Float32 channel_msg;
                         channel_msg.data = channel[1];
                         channel1_publisher.publish(channel_msg);
